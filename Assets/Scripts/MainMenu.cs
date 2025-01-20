@@ -7,4 +7,14 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("maze");
     }
+    
+    public void QuitMaze()
+    {
+        #if UNITY_EDITOR
+            Debug.Log("Quit Game");
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
+    }
 }
