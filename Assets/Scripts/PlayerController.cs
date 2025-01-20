@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 5.0f;
     [SerializeField] Rigidbody rb;
+    
 
+    public Text scoreText;
     public int health = 5;
     private int score = 0;
 
@@ -15,7 +18,7 @@ public class PlayerController : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
         Vector3 move = new Vector3(horizontalInput, 0, verticalInput);
-        rb.AddForce(move * speed);
+        rb.linearVelocity = new Vector3(horizontalInput * speed, rb.linearVelocity.y, verticalInput * speed);
     }
 
     void Update()
@@ -32,7 +35,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Pickup"))
         {
             score++;
-            Debug.Log($"Score: {score}");
+            SetScoreText();
+            //Debug.Log($"Score: {score}");
             other.gameObject.SetActive(false);
         }
         else if (other.gameObject.CompareTag("Trap"))
@@ -44,5 +48,10 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("You win!");
         }
+    }
+
+    private void SetScoreText()
+    {
+        scoreText.text = $"Score: {score}";
     }
 }
