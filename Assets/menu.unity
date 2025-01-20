@@ -251,7 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trapMat: {fileID: 2100000, guid: 7af3a5e02c9c69b458667cc56038b5d7, type: 2}
   goalMat: {fileID: 2100000, guid: 7cd685c6fca4c5b4b91dfe537f08d673, type: 2}
-  colorblindMode: {fileID: 0}
+  colorblindMode: {fileID: 782479183}
 --- !u!1 &288844456
 GameObject:
   m_ObjectHideFlags: 0
