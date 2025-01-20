@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -34,8 +35,6 @@ public class PlayerController : MonoBehaviour
             {
                 //Debug.Log("Game Over!");
                 SetEndScreen(false);
-
-                //SceneManager.LoadScene(this.gameObject.scene.name);
             }
     }
 
@@ -88,7 +87,19 @@ public class PlayerController : MonoBehaviour
             winLoseImage.color = Color.red;
             winLoseImage.gameObject.SetActive(true);
         }
+        StartCoroutine(LoadScene(3));
     }
 
+    #endregion
+
+    #region Methods
+        
+    IEnumerator LoadScene(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        SceneManager.LoadScene(this.gameObject.scene.name);
+
+
+    }
     #endregion
 }
