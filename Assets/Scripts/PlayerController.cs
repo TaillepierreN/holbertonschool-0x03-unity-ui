@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
 
     public Text scoreText;
     public Text healthText;
+    public Text winLoseText;
+    public  Image winLoseImage;
     public int health = 5;
 
     [SerializeField] private float speed = 5.0f;
@@ -30,8 +32,10 @@ public class PlayerController : MonoBehaviour
     {
         if (health == 0)
             {
-                Debug.Log("Game Over!");
-                SceneManager.LoadScene(this.gameObject.scene.name);
+                //Debug.Log("Game Over!");
+                SetEndScreen(false);
+
+                //SceneManager.LoadScene(this.gameObject.scene.name);
             }
     }
 
@@ -52,7 +56,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Goal"))
         {
-            Debug.Log("You win!");
+            SetEndScreen(true);
+            //Debug.Log("You win!");
         }
     }
     #endregion
@@ -67,6 +72,23 @@ public class PlayerController : MonoBehaviour
     {
         healthText.text = $"Health: {health}";
     }
-    
+
+    private void SetEndScreen(bool win)
+    {
+        if (win)
+        {
+            winLoseText.text = "You Win!";
+            winLoseText.color = Color.black;
+            winLoseImage.color = Color.green;
+            winLoseImage.gameObject.SetActive(true);
+        } else
+        {
+            winLoseText.text = "Game Over!";
+            winLoseText.color = Color.white;
+            winLoseImage.color = Color.red;
+            winLoseImage.gameObject.SetActive(true);
+        }
+    }
+
     #endregion
 }

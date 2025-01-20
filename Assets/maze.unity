@@ -6371,6 +6371,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1133620605}
   healthText: {fileID: 428287370}
+  winLoseText: {fileID: 1943872511}
+  winLoseImage: {fileID: 499579912}
   health: 5
   speed: 10
   rb: {fileID: 1608604834}
