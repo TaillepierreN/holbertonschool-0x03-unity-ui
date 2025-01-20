@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
                 //Debug.Log("Game Over!");
                 SetEndScreen(false);
             }
+        if (Input.GetKey("escape"))
+            SceneManager.LoadScene("menu");
     }
 
     private void OnTriggerEnter(Collider other)
