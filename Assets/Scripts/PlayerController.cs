@@ -4,13 +4,19 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed = 5.0f;
-    [SerializeField] Rigidbody rb;
-    
+    #region Variables
 
     public Text scoreText;
+    public Text healthText;
     public int health = 5;
+
+    [SerializeField] private float speed = 5.0f;
+    [SerializeField] Rigidbody rb;
+
     private int score = 0;
+
+    #endregion
+    #region Unity Callbacks
 
     void FixedUpdate()
     {
@@ -41,16 +47,26 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.CompareTag("Trap"))
         {
             health--;
-            Debug.Log($"Health: {health}");
+            SetHealthText();
+            //Debug.Log($"Health: {health}");
         }
         else if (other.gameObject.CompareTag("Goal"))
         {
             Debug.Log("You win!");
         }
     }
-
+    #endregion
+    #region UI
+        
     private void SetScoreText()
     {
         scoreText.text = $"Score: {score}";
     }
+
+    private void SetHealthText()
+    {
+        healthText.text = $"Health: {health}";
+    }
+    
+    #endregion
 }
